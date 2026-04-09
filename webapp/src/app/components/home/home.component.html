@@ -1,0 +1,38 @@
+<!-- Home Page -->
+<app-chatbot></app-chatbot>
+<div>
+  <div class="shadow" style="width: 100vw;">
+    <owl-carousel-o [options]="customOptions">
+      @for (item of bannerImages; track $index) {
+      <ng-template carouselSlide>
+        <div style="display: flex; justify-content: space-between;align-items: center;"
+          [routerLink]="'product/'+item.id">
+          <img [src]="item.images[0]" alt="images" style="height: 250px;width: 400px;" />
+          <span>{{ item.name }}</span>
+        </div>
+      </ng-template>
+      }
+    </owl-carousel-o>
+  </div>
+  <div class="mx-20">
+    <div class="m-4">
+      <h4 class="text-2xl font-bold mb-4">Featured Products</h4>
+      <div class="grid grid-cols-3 gap-4">
+        @for (product of newProducts; track $index) {
+        <div class="shadow-lg rounded-lg overflow-hidden bg-white">
+          <app-product-card [product]="product"></app-product-card>
+        </div>
+        }
+      </div>
+    </div>
+    <div class="m-4">
+      <h4 class="text-2xl font-bold mb-4">New Products</h4>
+      <div class="grid grid-cols-3 gap-4">
+        @for (product of newProducts; track $index) {
+        <div class="shadow-lg rounded-lg overflow-hidden bg-white">
+          <app-product-card [product]="product"></app-product-card>
+        </div>
+        }
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,21 @@
+<!-- Floating Chat Button -->
+<div class="chatbot-container">
+    <button class="chatbot-toggle" (click)="toggleChat()">
+        Chat
+    </button>
+
+    <div class="chat-window" *ngIf="isOpen">
+        <div class="chat-header">AI Assistant</div>
+        <div class="chat-messages">
+            <div *ngFor="let msg of messages" [ngClass]="msg.from === 'user' ? 'user-msg' : 'ai-msg'">
+                {{ msg.text }}
+            </div>
+        </div>
+
+        <div class="chat-input">
+            <input type="text" [(ngModel)]="userMessage" (keydown.enter)="sendMessage()"
+                placeholder="Type your question..." />
+            <button (click)="sendMessage()">Send</button>
+        </div>
+    </div>
+</div>
